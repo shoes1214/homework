@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        call做了什么：1.判断传入的参数类型，转化为对应的对象
+                     2.改变this指向，并调用函数
+                     
+        */
+
+        Function.prototype.mycall=function(a,...arguments){
+            if( a===null||a===undefined){
+                a=window
+            }
+            if(typeof a!=='object'&& typeof a!=="function"){
+                a=Object(a)
+            }
+
+            let cb=Symbol()
+            a[cb]=this
+            a[cb](...arguments)
+            delete a[cb]
+        }
+        function fn(c,d){
+            console.log(c+d,this)
+            
+        }
+        fn.call(1,1,1)
+        fn.mycall(1,1,1)
+    </script>
+</body>
+</html>

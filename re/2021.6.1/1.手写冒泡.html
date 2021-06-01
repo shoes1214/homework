@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /* 
+        冒泡原理：第一个数跟后面的每个数进行比较，大于换位置，小于等于没有操作
+
+        1.遍历数组
+        2.遍历，每个数与后面的一位比较
+         */
+         let arr=[1,23,5,32,4,1,53,5,3,3]
+         for(let i=0;i<arr.length;i++){
+             for(let j=0;j<arr.length-i;j++){
+                 if(arr[j]>arr[j+1]){
+                     let num=arr[j]
+                     arr[j]=arr[j+1]
+                     arr[j+1]=num
+                 }
+             }
+         }
+         console.log(arr)
+    </script>
+</body>
+</html>
