@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj={naem:'zs',hobby:[{football:1}]}
+        function checktype(a){
+           return Object.prototype.toString.call(a).slice(8,-1).toLowerCase()
+        }
+        function deepclone(b){
+         
+          if(checktype(b)==="array") var re=[]
+          if(checktype(b)==="object") var re={}
+          else return b
+          for(var key in b){
+              re[key]=deepclone(b[key])
+          }
+          return re
+        }
+        console.log(deepclone(obj))
+    </script>
+</body>
+</html>

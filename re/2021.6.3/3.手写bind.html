@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        bind:
+             1.改变this指向
+             2.返回一个函数
+        即可理解为，返回一个改变this的函数
+        */
+       Function.prototype.mybind=function(a){
+        var arg=Array.from(arguments).slice(1)
+        var _this=this
+        return function(){
+            _this.apply(a,arg)
+        }
+       }
+    </script>
+</body>
+</html>

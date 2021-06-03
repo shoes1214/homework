@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj={naem:'zs',hobby:[{football:1}]}
+       function clone(a){
+           var re={}
+           for(var key in a){
+               re[key]=a[key]
+           }
+           return re
+       }
+        console.log(clone(obj))
+    </script>
+</body>
+</html>
