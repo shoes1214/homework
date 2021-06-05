@@ -14,7 +14,8 @@ router.post('/login',async(req,res)=>{
     const {username,password}=req.body
     let user=await find(username,password)
     if(user){
-        res.render('main',user)
+        res.cookie('userid', user._id)
+        res.redirect('http://127.0.0.1:5000/main')
     }else{
         res.send('账号或密码错误')
     }
