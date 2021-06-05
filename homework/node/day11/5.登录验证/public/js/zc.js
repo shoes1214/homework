@@ -67,3 +67,15 @@ repsw.oninput=function(e){
         repswspan.style.color="red"
     }
 }
+let btn=document.querySelector('input[type=submit]')
+let spans=document.querySelectorAll('form span')
+btn.onclick=function(e){
+    if(!(spans[0].style.color==='green')||!(spans[1].style.color==='green')||!(spans[2].style.color==='green')){
+        alert('输入错误')
+    return e.preventDefault()
+ }
+ if(psw.value !==repsw.value){
+     alert('密码不一致')
+     return e.preventDefault()
+ }
+}

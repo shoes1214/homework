@@ -1,6 +1,7 @@
 (async function(){
     let re=require('../../express')
-    await re 
+    await "a"
+    console.log(re)
     if(re===1){
         confirm('账号错误')
     }
