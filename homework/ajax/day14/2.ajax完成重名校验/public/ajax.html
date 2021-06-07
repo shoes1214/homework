@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+
+    <script>
+        let ipt=document.getElementById('ipt')
+        let btn=document.getElementById('btn')
+        let box=document.getElementById('box')
+
+        btn.onclick=function(){
+            let value=ipt.value
+            if(!value)return
+            let xhr=new XMLHttpRequest()
+            xhr.open('post','http://127.0.0.1:5000/test')
+            xhr.setRequestHeader('content-type',
+          'application/x-www-form-urlencoded')
+            xhr.send('username='+value)
+
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status===200){
+                        if(xhr.responseText==='ok'){
+                            box.textContent=xhr.responseText
+                            box.style.color="green"
+                        }else{
+                            box.textContent=xhr.responseText
+                            box.style.color="red"
+                        }
+                       
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

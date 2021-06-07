@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+   <button id="btn">按钮</button>
+   <span id="span"></span>
+   <script src='./jquery.js'></script>
+   <script src='./myajax.js'></script>
+   <script>
+       $('#btn').on('click',async function(){
+        let promise = myajax({
+          url: 'http://127.0.0.1:5000/test',
+          type: 'post',
+          data: {
+            name: 'ls',
+            age: 18,
+          }})
+        let re=await promise.then(()=>{return value},()=>{})
+        console.log(re)
+       })
+   </script>
+</body>
+</html>
