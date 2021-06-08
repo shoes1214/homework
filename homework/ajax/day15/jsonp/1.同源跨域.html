@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        /* 
+        jsonp:实现跨域
+        jsonp原理：利用script标签不受同源策略影响，给服务器发送请求，将一个函数的名字发送给服务器，服务器响应这个函数的调用，将要响应的数据，传入函数调用的实参
+        jsonp特点：1.只能发送get请求 2必须后台配合
+        3 没有兼容问题
+        */
+
+        function fn(data){
+            console.log(data)
+            console.log('函数的主体')
+        }
+
+        btn.onclick=function(){
+            let script=document.createElement('script')
+            script.src='http://127.0.0.1:5000/test?callback=fn'
+            document.body.appendChild(script)
+        }
+    </script>
+</body>
+</html>
