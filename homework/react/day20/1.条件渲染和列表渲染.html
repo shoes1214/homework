@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        /* 
+        条件渲染
+         */
+         let a=11
+         let con
+         if(a>10){
+            con=<div>{a}</div>
+         }else{
+            con=<div>{a-1}</div>
+         }
+         /* 
+         列表渲染
+         */
+        let arr=[{name:'zs',age:18},{name:'ls',age:20}]
+        let con1=<ul>{arr.map((item)=>{
+           return (<li key={item.name}>{item.name}
+            <h3>{item.age}</h3></li>)
+        })}</ul>
+
+         ReactDOM.render(con,document.getElementById("root"))
+         ReactDOM.render(con1,document.getElementById("root"))
+         /* 
+         列表渲染：map的回调return什么，就在什么上面加个key。值位唯一。
+         key的注意点：若列表没有删除逻辑，key的值不重复就可以。如果有删除逻辑最好不用下标，因为随着元素删除，下标会变化
+         */
+    </script>
+</body>
+</html>

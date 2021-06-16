@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ha{
+            background-color: darkcyan;
+        }
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+    <script type="text/babel">
+    let a=0;
+        let div=<div id="ha" className={a+1===1?"show":"hide"}>hahahah</div>
+        ReactDOM.render(div,document.getElementById("root"))
+    </script>
+</body>
+</html>
