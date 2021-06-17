@@ -1,11 +1,8 @@
 let Util={}
 
 Util.myajax=function(todolist){
-    let{type,
-        data:{
-            todoname,
-            isdone
-        },
+    let{type="get",
+        data,
        url
     }=todolist
     let xhr=new XMLHttpRequest
