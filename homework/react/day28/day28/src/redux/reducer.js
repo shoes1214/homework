@@ -1,11 +1,6 @@
 import {UPDATETODO,UPDATEID,DELETEONE,ALLDELETE,CHANGEDONE} from "./contants"
-let initState = {
-    list: [
-      { id: 1, todoName: '吃饭', isDone: false },
-      { id: 2, todoName: '敲代码', isDone: true },
-    ],
-  }
-export default function(state=initState,action){
+
+export default function(state=JSON.parse(localStorage.getItem('list')),action){
   let {list}=state
   let newList=[]
     switch(action.type){
