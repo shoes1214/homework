@@ -9,3 +9,15 @@
 .policy-content .policy-text {
   display: block;
 }
+.register-phone {
+  height: 100%;
+  background-color: white;
+}
+.InputItem-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.register-phone-icon {
+  color: #000;
+}

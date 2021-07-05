@@ -1,0 +1,10 @@
+html,body,#root{
+    height:100% 
+}
+.btn{
+    border-radius: 30px;
+    margin: 0 20px;
+}
+.icon-left{
+    color:black
+}
