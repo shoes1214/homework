@@ -1,0 +1,18 @@
+.country-navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.country-main {
+  margin-top: 45px;
+}
+.country-ul {
+  position: fixed;
+  font-size: 12px;
+  text-align: center;
+  right: 0;
+  top: 90px;
+  color: #2384d3;
+}

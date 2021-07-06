@@ -6,7 +6,7 @@ module.exports={ plugins: [
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { '@brand-primary': 'black' },
+            modifyVars: { '@brand-primary': 'red','@brand-primary-tap': 'red' },
             javascriptEnabled: true,
           },
         },
