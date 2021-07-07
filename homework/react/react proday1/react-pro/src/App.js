@@ -5,8 +5,9 @@ function App() {
     <Router>
       <Switch>
         {routes.map((route)=>{
-          console.log(route)
-          return <Route {...route} key={route.path} />
+         
+          return <Route {...route} key={route.path} exact/>
+          // 给route加上exact使其path精确匹配
         })}
       </Switch>
     </Router>

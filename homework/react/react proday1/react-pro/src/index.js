@@ -5,6 +5,7 @@ import App from './App';
 import 'antd-mobile/dist/antd-mobile.less'
 import "./style/reset.css"
 import "./style/common.css"
+import "./style/iconfont.css"
 ReactDOM.render(
   
     <App />
