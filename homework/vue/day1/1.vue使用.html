@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="App">
+        <h1>{{msg}}</h1>
+
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+        /* 
+        1使用script标签引入vue.js
+        2创建Vue对象（配置信息，即属性名为一些固定名）
+         */
+
+         /* 
+         MVVM vue设计模式
+         M：Model数据层（data）
+         V:View 视图层（DOM）
+         VM:ViewModel 视图模型层（Vue做的事）
+         Data Bindings：数据绑定，数据从数据层流向视图层（VM做的）
+            操作DOM元素的value或textContent
+         DOM Listeners: 事件监听，将数据从视图层流向数据层
+            给input绑定事件，收集输入数据，更新数据层数据
+        双向数据流
+         */
+        let msg="hello vue"
+        new Vue({
+            el:"#App", //element选择器，解析其子节点
+            data:{
+                msg   //初始化数据，data存放非函数型数据
+            }
+        })
+    </script>
+</body>
+</html>

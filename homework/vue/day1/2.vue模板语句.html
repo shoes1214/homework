@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="App">
+      <h1>{{msg}}</h1>
+      <!-- vue中展示数据在标签内使用{{表达式}}，不能直接编辑属性-->
+      <input type="text" v-model="con" />
+      <input type="text" v-bind:value="val" />
+      <div>{{num}}</div>
+      <button v-on:click="handlechange">按钮</button>
+      <!-- 
+            vue模板语法：
+            1.插值语法：
+            {{表达式}}
+            1.1表达式与语句的区别：
+            1.1.1.表达式后面不加 ; 1.1.2.表达式有返回值,可以是undefined
+            1.2.1.后面有;为语句,有些语句可以省略;,代码运行时会把;添加进去
+            1.2.2.语句没有返回值
+            2.指令语法：
+            2.1 v-model(双向数据绑定)
+            使用：v-model="js表达式"
+            作用：双向数据绑定
+            数据从Model层流向View层,进行展示
+            数据从View层流向Model层,修改Model层数据
+            2.2 v-bind(单向数据绑定或叫强制数据绑定)
+            使用：v-bind:名="js表达式"
+            简写： :名="js表达式"
+            常用父子组件通信
+            2.3 v-on (事件绑定)
+            使用： v-on:事件名="回调函数"
+            简写： @事件名="回调函数"
+         -->
+      <h2>{{con}}</h2>
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+      /* 
+        1使用script标签引入vue.js
+        2创建Vue对象（配置信息，即属性名为一些固定名）
+        3使用v-model进行双向绑定
+         */
+      let msg = 'hello vue'
+        let num=0
+        function handlechange(e) {
+            console.log(e) //事件对象
+            console.log(this) //this为Vue实例，保存了data对象的所有数据
+            this.num++
+          }
+      new Vue({
+        el: '#App', //element选择器，解析其子节点
+        data: {
+          msg, //初始化数据，data存放非函数型数据
+          con: '',
+          val: 1,
+          num,
+        },
+        methods: {
+          // methods存放函数
+          handlechange,
+        },
+      })
+    </script>
+  </body>
+</html>
