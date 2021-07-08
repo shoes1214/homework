@@ -24,10 +24,10 @@ const Item = List.Item
 7.调整样式，使用position：fixed使顶部固定
 8.生成侧边字母
 9.侧边字母添加点击事件，点击时会跳转到对应的List
-10.点击Item跳转到/register/phone，将号码传递过去
+10.location.state接收参数，通过参数点击Item判断跳转页面地址，将号码传递过去
 */
 export default function Country(props) {
-  const { history } = props
+  const { history,location } = props
   let [country, setCountry] = useState({}) //由于接受的数据是一个对象，因此初始化成一个对象
   useEffect(() => {
     async function fetchData() {
@@ -50,7 +50,12 @@ export default function Country(props) {
   //高阶函数，点击跳转到registerphone,返回函数,通过history.push传数据
   let toPhone=(value)=>{
     return ()=>{
-    history.push("/register/phone",value)
+      if(location.state==="registerPhone"){
+        history.push("/register/phone",value)
+      }else if(location.state==="loginCode"){
+        history.push("/login/code",value)
+      }
+    
     }
   }
 

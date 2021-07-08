@@ -14,6 +14,7 @@ import './RegisterPhone.less'
 6.对输入框进行表单检验
 7.设置下一步按钮的点击事件,判断手机号是否注册过,没有就跳转到/register/code,将手机号传过去,有就toast
 8.判断是否从country跳回来（通过是否有location.state）,有的话不alert，没有才弹窗
+9.修改跳转到国家的按钮，使用history.push
 */
 const alert = Modal.alert
 export default function RegisterPhone(props) {
@@ -110,11 +111,11 @@ let next=()=>{
       <WingBlank>
       <WhiteSpace size="lg"/>
       <InputItem placeholder="请输入手机号" clear value={phone} onChange={handlePhone}>
-        <Link id="NavBar-InputItem" to='/country'>
+        <div id="NavBar-InputItem" onTouchEnd={()=>{history.push("/country","registerPhone")}}>
           {/* history.push第一个参数传入地址，绑定点击事件 */}
           <span>{pre}</span>
           <Icon type="down"></Icon>
-        </Link>
+        </div>
       </InputItem>
       <WhiteSpace size="lg"/>
       <Button type="primary" className="btn" disabled={disable} onClick={next}>下一步</Button>

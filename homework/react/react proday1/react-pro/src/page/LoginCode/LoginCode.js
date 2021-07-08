@@ -6,6 +6,7 @@
 5.按钮倒计时功能,时间到1s切换按钮
 6.验证码输入框进行表单校验
 7.点击登录按钮,发送请求(成功跳转首页,失败轻提示)
+8.点击+86跳到/country
 */
 import { useState, useEffect } from 'react'
 import {
@@ -93,6 +94,8 @@ let loginBtn=async()=>{
 		 Toast.fail(res.data.message,1)
 	 }
 }
+// 定义一个变量来接收country传回来的值
+let per="+"+(location.state||86)
   return (
     <div className="login container">
       <NavBar mode="light">硅谷注册登录</NavBar>
@@ -104,8 +107,8 @@ let loginBtn=async()=>{
           value={phone}
           onChange={handlePhone}
         >
-          <div className="phone-prefix">
-            <span>+86</span>
+          <div className="phone-prefix" onClick={()=>{history.push("/country","loginCode")}}>
+            <span>{per}</span>
             <Icon type="down" />
           </div>
         </InputItem>
