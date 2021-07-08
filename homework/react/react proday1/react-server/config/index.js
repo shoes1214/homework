@@ -24,9 +24,9 @@ if (isDev) {
 
 // github oauth
 const CLIENT_ID =
-  "930fbaaa9755c36bc53ce977dad10433e7acd27aa46ab66d49e4186e411da9f3";
+  "569f66147235b39570b2e59530a1f3bdfb933e3b71e0b5bb48ba0cdb51cfd101";
 const CLIENT_SECRET =
-  "34fb3a3bb3700a7449391897fe95776deb0ab5d4f8cafb81f7b6ec8d65a19af4";
+  "c45f6fdfc36316f192cd6429663864cd18349d0d426ba9392ba4d8455b0b1b0a";
 
 const SECRET = "A0D2af~.dsa";
 

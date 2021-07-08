@@ -7,6 +7,7 @@
 6.验证码输入框进行表单校验
 7.点击登录按钮,发送请求(成功跳转首页,失败轻提示)
 8.点击+86跳到/country
+9.第三方登录
 */
 import { useState, useEffect } from 'react'
 import {
@@ -88,11 +89,15 @@ let loginBtn=async()=>{
 	let res= await loginCode(phone,code)
 	
 	 if(res.data.code===20000){
-		console.log(res.data.data)
+	
 		 history.push("/",res.data.data)
 	 }else{
 		 Toast.fail(res.data.message,1)
 	 }
+}
+// 点击第三方登录图标函数（页面跳转到home，使用window.location.href）
+let handleIcon=()=>{
+   window.location.href="https://gitee.com/oauth/authorize?client_id=569f66147235b39570b2e59530a1f3bdfb933e3b71e0b5bb48ba0cdb51cfd101&redirect_uri=http://localhost:5000/login/oauth/gitee&response_type=code"
 }
 // 定义一个变量来接收country传回来的值
 let per="+"+(location.state||86)
@@ -107,7 +112,7 @@ let per="+"+(location.state||86)
           value={phone}
           onChange={handlePhone}
         >
-          <div className="phone-prefix" onClick={()=>{history.push("/country","loginCode")}}>
+          <div className="phone-prefix" onTouchEnd={()=>{history.push("/country","loginCode")}}>
             <span>{per}</span>
             <Icon type="down" />
           </div>
@@ -142,7 +147,9 @@ let per="+"+(location.state||86)
         </div>
         <WhiteSpace size="lg" />
         <WingBlank size="lg">
-          <Button disabled type="primary" onClick={loginBtn} className="btn" disabled={nextDisable}>
+          <Button disabled type="primary" onClick={loginBtn} className="btn" disabled={nextDisable||!btn}
+          // 只有验证码和手机号的正则验证成功了，才能点击登录按钮
+          >
             登录
           </Button>
         </WingBlank>
@@ -157,7 +164,7 @@ let per="+"+(location.state||86)
         </div>
         <div className="login-other-text">其他登录方式</div>
         <div className="login-icons">
-          <span className="iconfont icon-gitee-fill-round"></span>
+          <span className="iconfont icon-gitee-fill-round" onTouchEnd={handleIcon}></span>
           <span className="iconfont icon-QQ"></span>
           <span className="iconfont icon-weixin"></span>
         </div>

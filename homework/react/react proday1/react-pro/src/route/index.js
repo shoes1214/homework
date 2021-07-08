@@ -1,10 +1,14 @@
-import LoginCode from "../page/LoginCode/LoginCode"
-import LoginPassword from "../page/LoginPassword/LoginPassword"
-import RegisterCode from "../page/RegisterCode/RegisterCode"
-import RegisterPassword from "../page/RegisterPassword/RegisterPassword"
-import RegisterPhone from "../page/RegisterPhone/RegisterPhone"
-import Country from "../component/country"
-import Home from "../page/Home/Home"
+import { lazy } from "react"
+// 引入lazy使路由加载时使用懒加载
+
+let LoginCode=lazy(()=>import("../page/LoginCode/LoginCode"))
+
+let LoginPassword =lazy(()=>import("../page/LoginPassword/LoginPassword"))
+let RegisterCode =lazy(()=>import( "../page/RegisterCode/RegisterCode"))
+let RegisterPassword =lazy(()=>import( "../page/RegisterPassword/RegisterPassword"))
+let RegisterPhone =lazy(()=>import( "../page/RegisterPhone/RegisterPhone"))
+let Country =lazy(()=>import( "../component/country"))
+let Home =lazy(()=>import( "../page/Home/Home"))
 
 const routes = [
   { path: '/', component: Home },
