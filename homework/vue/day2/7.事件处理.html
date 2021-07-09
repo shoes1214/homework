@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <button @click="change1">change1</button>
+        <button @click="change2(1,2,3)">change2</button>
+        <button @click="change3(1,2,3,$event)">change3</button>
+        <button @click="con++">change4</button>
+        <p>{{con}}</p>
+        <a href="http://www.baidu.com" @click.prevent>baidu</a>
+        
+        <div style="height:100px;background-color: chartreuse;" @click="fn1">
+            <h1 @click.stop="fn">haha</h1>
+        </div>
+
+        <input type="text" @keyup="key1">
+        <input type="text" @keyup.13="key2">
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                con:0
+            },
+            methods:{
+                change1(e){
+                    console.log(1,e)
+                },
+                change2(...arg){
+                    console.log(arg)
+                },
+                change3(...arg){
+                    console.log(arg)
+                },
+                fn(){
+                    console.log("in")
+                },
+                fn1(){
+                    console.log("out")
+                },
+                key1(){
+                    console.log(1)
+                },
+                key2(){
+                    console.log(2)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

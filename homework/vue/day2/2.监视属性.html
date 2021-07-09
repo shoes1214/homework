@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <p>{{num}}</p>
+        <button @click="num++">+</button>
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                num:0
+            },
+            watch:{
+                // 监视属性：监视一个已存在的属性，一旦属性发生变化，触发回调
+                // 特点：没有返回值，可以进行异步操作
+                num(){
+                    
+                    console.log(this.num)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

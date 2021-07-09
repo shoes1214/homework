@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        name：<input type="text" v-model="name">
+        <br>
+        age：<input type="text" v-model="age">
+        <br>
+        只读：<input type="text" :value="getinfo">
+        <br>
+        可读可写：<input type="text" v-model="setinfo">
+        <!-- 
+            页面使用{{方法名}}展示计算的结果
+         -->
+    </div>
+    <script src="/vue/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                name:"zs",
+                age:18
+            },
+            computed:{
+                // computed计算属性
+               /* 
+               1根据一个或多个值参与计算，生成新的结果，2一定有返回值，返回值就是计算属性要展示的内容，3不能进行异步操作，4有缓存，只有依赖的值发生变化才会重新计算
+               */
+                // 写法1：只读属性
+                getinfo(){
+                    return this.name+" "+this.age
+                    // 函数的返回值就是当前计算属性的值
+                },
+                // 写法2：可读可写
+                setinfo:{
+                    get(){
+                        // 函数的返回值就是当前计算属性的值
+                        return this.name+" "+this.age
+                    },
+                    set(value){
+                        // 设置可读可写计算属性的值，会调用set方法，set方法决定如何更新，set方法接收一个参数value，value就是更新的值
+                        console.log(value)
+                        let[name,age]=value.split(" ")
+                         this.name=name
+                         this.age=age
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 
+            1.列表显示
+            数组：v-for /index
+            对象：v-for /key
+
+         -->
+        <ul>
+            <li v-for="person,index in persons" key="index">
+                {{`${person.name}-${person.age}`}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="value,key in persons[0]" key="key">
+                {{key}}-{{value}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="person,index in persons" key="index">
+                <ul>
+                    <li v-for="value,key in person" key="key">
+                        {{key}}-{{value}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="/vue/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                persons:[
+                    {name:"zs",age:18},
+                    {name:"ls",age:17},
+                    {name:"ww",age:22},
+                    {name:"zl",age:16},
+                    {name:"tq",age:20},
+                    {name:"wb",age:19},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

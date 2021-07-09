@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red
+        }
+        .green{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <p style="color:blueviolet">con1</p>
+        <!-- 1.静态设置style属性 -->
+        <p class="red">con2</p>
+        <!-- 2.静态设置class属性 -->
+        <p :style="{color:clo}">con3</p>
+        <!-- 3.动态设置style属性 -->
+        <p :class="isred?'red':'green'">con4</p>
+        <p :class="[isred?'red':'green']">con5</p>
+        <p :class="{red:isred,green:!isred}">con6</p>
+        <!-- 4.动态设置class属性 -->
+        <button @click="changecolor">yellow</button>
+        <button @click="changered">isred</button>
+        <p :style="{fontSize:size+'px'}">font</p>
+        <input type="text" v-model="size">
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                clo:"black",
+                isred:true,
+                size:12
+            },
+            methods:{
+                changecolor(){
+                    this.clo="yellow"
+                },
+                changered(){
+                    this.isred=!this.isred
+                }
+            }
+        })
+    </script>
+</body>
+</html>

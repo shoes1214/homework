@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 
+            1.列表显示
+            数组：v-for /index
+            对象：v-for /key
+
+         -->
+      <input type="text" v-model="searchName" />
+      <ul>
+        <li v-for="person,index in showPerson" :key="index">
+          {{`${person.id}-${person.name}-${person.age}`}}
+        </li>
+      </ul>
+      <button @click="type='asc'">年龄升序</button>
+      <button @click="type='desc'">年龄降序</button>
+      <button @click="type='default'">默认排序</button>
+    </div>
+    <script src="/vue/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          persons: [
+            { name: 'zs', age: 18, id: 1 },
+            { name: 'ls', age: 17, id: 2 },
+            { name: 'ww', age: 22, id: 3 },
+            { name: 'zl', age: 16, id: 4 },
+            { name: 'tq', age: 20, id: 5 },
+            { name: 'wb', age: 19, id: 6 },
+          ],
+          searchName: '',
+          type:"default"
+        },
+        computed: {
+          showPerson() {
+            let { persons, searchName,type } = this
+            let newPerson = persons.filter((item) => {
+              return item.name.indexOf(searchName) !== -1
+            })
+            if(type==="default"){
+                return newPerson
+            }
+            let finalPerson=newPerson.sort((a,b)=>{
+                return type==="desc"?b.age-a.age:a.age-b.age
+                
+            })
+            return finalPerson
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
