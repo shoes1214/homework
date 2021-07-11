@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="root">
+      对象
+      <ul>
+        <li v-for="value,key in ren" :key="key">
+          {{key}}-{{value}}
+        </li>
+      </ul>
+      <button @click="click1">加属性</button>
+      数组
+      <ul>
+        <li v-for="person,index in persons" :key="index">
+          {{person}}
+        </li>
+      </ul>
+      <button @click="click2">加人</button>
+    </div>
+    <script src="../vue/vue.js"></script>
+    <script>
+      /* 
+      响应式：更新数据时，数据会发生变化，同时用户界面也会发生变化，在Vue中，data中的数据是响应式的。
+      data中对象中原有的属性都是响应式，给对象新添加的属性就不是响应式，如果希望是，可以使用this.$set
+      data中的数组是响应式的，使用改变原数组方法时，实际使用的是Vue封装后的方法
+      */
+       new Vue({
+         el:"#root",
+        data:{
+          ren:{
+            name:"zs",
+            age:18,
+            play:"game"
+          },
+          persons:["zs","ls","ww","zl"]
+        },
+        methods:{
+          click1(){
+            // 更改原有属性 方法1
+            // this.ren.name="ls"
+            // 对象重新赋值 方法2
+            // this.ren={
+            //   ...this.ren,
+            //   eat:"chicken"
+            // }
+            // 使用this.$set将新增属性变为响应式 方法3
+            this.$set(this.ren,"eat","fish")
+          },
+          click2(){
+            //  使用数组方法（Vue重新封装过） 方法1
+            this.persons.push("ww")
+            //  数组重新赋值 方法2
+            this.persons=[...this.persons,"ww"]
+          }
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .v-leave{
+      opacity: 1;
+    }
+    .v-leave-active{
+      transition: opacity 2s;
+    }
+    .v-leave-to{
+      opacity: 0;
+    }
+    .v-enter{
+      opacity: 0;
+    }.v-enter-active{
+      transition: opacity 2s;
+    }
+    .v-enter-to{
+      opacity: 1;
+    }
+    .fade-leave{
+      opacity: 1;
+    }
+    .fade-leave-active{
+      transition: opacity 2s;
+    }
+    .fade-leave-to{
+      opacity: 0;
+    }
+    .fade-enter{
+      opacity: 0;
+    }.fade-enter-active{
+      transition: opacity 2s;
+    }
+    .fade-enter-to{
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <p>{{msg}}</p>
+    <p v-once>{{msg}}</p>
+    <p v-pre>{{msg}}</p>
+    <div v-text="con" ref="p1"></div>
+    <div v-html="con" ref="p2"></div>
+    <button @click="msg++">godie</button>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.5/dayjs.min.js"></script>
+  <script src="../vue/vue.js"></script>
+  <script>
+  
+    new Vue({
+      el:"#root",
+      data:{
+        msg:1,
+        isshow:true,
+        con:"<h1>h1</h1>"
+        
+      },
+      mounted(){
+        // mounted后才能获取真实DOM实例
+        console.log(this.$refs.p1)
+        console.log(this.$refs.p2)
+      }
+    })
+  </script>
+</body>
+</html>

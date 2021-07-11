@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <p v-show='isshow'>{{msg}}</p>
+    <button @click='$destroy()'>godie</button>
+  </div>
+  <script src="../vue/vue.js"></script>
+  <script>
+    // Vue生命周期有八个阶段：beforeCreate created beforeMount mounted beforeUpdate updated
+    //  beforeDestroy destroyed
+    //  常用mounted，挂载之后，页面渲染完成，生成DOM元素，此阶段可以发送ajax请求，启动定时器
+    // 常用beforDestroy，此阶段可以收尾，如清除定时器
+    new Vue({
+      el:"#root",
+      data:{
+        msg:"haha",
+        isshow:true,
+      },
+      mounted(){
+        this.timer=setInterval(()=>{
+          console.log("mounted")
+          this.isshow=!this.isshow
+        },500)
+        
+      },
+      beforeDestroy () {
+        clearInterval(this.timer)
+      }
+    })
+  </script>
+</body>
+</html>
