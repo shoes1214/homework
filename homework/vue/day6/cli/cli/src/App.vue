@@ -1,59 +1,43 @@
 <template>
-  <div>
-    <A>
-      <p>{{con}}</p>
-      <button @click="con++">+</button>
-    </A>
-    <hr>
-    <B>
-      <template v-slot:header>
-          <p>B-header</p>
-      </template>
-      <p>B-main</p>
-      <!-- v-slot简写为# -->
-      <template #footer>
-          <p>B-footer</p>
-      </template>
-    </B>
-    <hr>
-    <C>
-      <template v-slot:header="obj">
-        <!-- 父组件接收到的数据是一个对象 -->
-          <p>C-header {{obj.sex}}</p>
-      </template>
-      <p>C-main</p>
-      <!-- v-slot简写为# -->
-      <template #footer={age}>
-        <!-- 可以在接收时解构 -->
-          <p>C-footer {{age}}</p>
-      </template>
-    </C>
+  <div class="container">
+    <h1>vue-router</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+          <!-- router-link 负责切换地址  to属性可以设置跳转的地址值 -->
+          <li>
+            <router-link to="/about">About</router-link>
+          </li>
+          <li><router-link to="/home">Home</router-link></li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import A from "./views/A"
-import B from "./views/B"
-import C from "./views/C"
-/* 
-插槽：作用：父组件向子组件传递带数据的标签
-默认插槽：见A 直接将标签传给子组件
-命名插槽：见B 使用template标签将传递的内容拆分，使用v-slot给template命名
-作用域插槽：见C 子组件传递数据给父组件，父组件通过v-slot接收
-*/
+// import Home from "./views/Home"
+// import About from "./views/About"
+// 1.下载包vue-router 2.配置vue-router 3.main.js应用vue-router配置文件
 export default {
-name:"App",
-data(){
-  return{
-    con:1
-  }
-},
-components:{
-  A,B,C
-}
-}
+  name: "App",
+  data() {
+    return {
+      con: 1,
+    };
+  },
+  // components:{
+  //   Home,About
+  // }
+};
 </script>
 
 <style>
-
+.router-link-active {
+  color: #fff !important;
+  background-color: orange !important;
+}
 </style>
